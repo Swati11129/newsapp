@@ -22,10 +22,10 @@ const News = (props) => {
     let data = await fetch(url);
     props.setProgress(30);
     let parsedData = await data.json()
+    setLoading(true)
     props.setProgress(70);
     setArticles(parsedData.articles)
     setTotalResults(parsedData.totalResults)
-    setLoading(false)
 
     props.setProgress(100);
   }
@@ -57,7 +57,7 @@ const News = (props) => {
         next={fetchMoreData}
         hasMore={articles.length !== totalResults}
 
-        loader={<Spinner />} >
+        loader={ <Spinner />} >
 
         <div className='container'>
           <div className='row'>
